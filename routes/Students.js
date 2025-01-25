@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const studentsController = require('../controllers/StudentsController');
-const {validateCreateStudent, validateStudentId} = require('../middlewares/StudentValidatorMW');
+const studentsController = require('../controllers/studentsController');
+const {validateCreateStudent, validateStudentId} = require('../middlewares/studentValidatorMW');
 const verifyAdminToken = require('../middlewares/validateAdminToken');
 
 

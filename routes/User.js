@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const userValidator = require('../middlewares/UsersValidatorsMW');
-const uesrRegester = require('../controllers/UserController');
+const userValidator = require('../middlewares/usersValidatorsMW');
+const uesrRegester = require('../controllers/userController');
 
 
 //Registration
