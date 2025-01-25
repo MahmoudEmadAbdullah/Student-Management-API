@@ -1,4 +1,4 @@
-# Student-Management-System" 
+# Student-Management-System
 
 A secure **Student Management API** built with Node.js, Express & MongoDB. Features JWT authentication, admin roles, and RESTful endpoints. 
 
