@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
-const verfiyToken = (req, res, next) => {
+const verifyAdminToken = (req, res, next) => {
 
     //Get x-auth-token header
     const token = req.header('x-auth-token');
@@ -21,4 +21,4 @@ const verfiyToken = (req, res, next) => {
     }
 }
 
-module.exports = verfiyToken;
+module.exports = verifyAdminToken;

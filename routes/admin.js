@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const verfiyToken = require('../middlewares/AuthMWPermission');
+const verifyAdminToken = require('../middlewares/validateAdminToken');
 const adminUser = require('../controllers/adminController');
 
 //update
-router.put('/:id', verfiyToken, adminUser);
+router.put('/:id', verifyAdminToken, adminUser);
 
 
 module.exports = router;

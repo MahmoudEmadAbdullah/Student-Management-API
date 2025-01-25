@@ -3,14 +3,14 @@ const express = require('express');
 const path = require('path');
 const helmet = require('helmet');
 const dbConnection = require('./config/dbConnection');
-const errorHandler = require('./middlewares/errorMW');
+const errorHandler = require('./middlewares/globalErrorHandler');
 const app = express();
 
 
 //Import Routers
 const studentsRouter = require('./routes/Students')
 const userRouter = require('./routes/User');
-const authRouter = require('./routes/login');
+const loginRouter = require('./routes/login');
 const adminRouter = require('./routes/admin');
 
 
@@ -39,7 +39,7 @@ app.use("/api/students", studentsRouter);
 app.use("/api/user", userRouter);
 
 // Using Router of login
-app.use("/api/login", authRouter);
+app.use("/api/login", loginRouter);
 
 // Using Router of admin
 app.use('/api/admin', adminRouter);
