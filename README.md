@@ -46,10 +46,10 @@ By default, the application connects to a local MongoDB database at mongodb://12
 -----
 
 ## 🛠️ Technologies Used
--Backend: Node.js, Express
--Database: MongoDB, Mongoose
--Security: JWT, Helmet.js
--Tools: Postman, MongoDB Compass
+- Backend: Node.js, Express.
+- Database: MongoDB, Mongoose.
+- Security: JWT, Helmet.js.
+- Tools: Postman, MongoDB Compass.
 
 -----
 
