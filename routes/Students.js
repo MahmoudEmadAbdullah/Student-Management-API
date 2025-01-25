@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const studentsController = require('../controllers/StudentsControllerDB');
+const studentsController = require('../controllers/StudentsController');
 const {validateCreateStudent, validateStudentId} = require('../middlewares/StudentValidatorMW');
 const verfiyToken = require('../middlewares/AuthMWPermission');
 

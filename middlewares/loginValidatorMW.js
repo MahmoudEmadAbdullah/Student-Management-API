@@ -1,6 +1,6 @@
-const {authSchema} = require('../util/authValidator');
+const {authSchema} = require('../util/loginValidator');
 
-const authValidator = (req, res, next) => {
+const loginValidator = (req, res, next) => {
     try{
         authSchema.parse(req.body);
         next();
@@ -10,4 +10,4 @@ const authValidator = (req, res, next) => {
     }
 }
 
-module.exports = authValidator;
+module.exports = loginValidator;

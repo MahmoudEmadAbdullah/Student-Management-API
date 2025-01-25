@@ -1,12 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const authValidator = require('../middlewares/authValidatorMW');
 const {User} = require('../models/UsersModelDB')
 const bcrypt = require('bcrypt');
 
 
-//Login
-router.post('/', authValidator, async (req, res, next) => {
+const userLogin = async (req, res, next) => {
     try{
 
         //check email
@@ -31,7 +27,7 @@ router.post('/', authValidator, async (req, res, next) => {
     } catch(err){
         next(err);
     }
-});
+};
 
 
-module.exports = router;
+module.exports = userLogin;

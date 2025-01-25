@@ -10,7 +10,7 @@ const app = express();
 //Import Routers
 const studentsRouter = require('./routes/Students')
 const userRouter = require('./routes/User');
-const authRouter = require('./routes/auth');
+const authRouter = require('./routes/login');
 const adminRouter = require('./routes/admin');
 
 
