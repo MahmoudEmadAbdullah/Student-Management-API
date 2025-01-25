@@ -20,22 +20,20 @@ A secure **Student Management API** built with Node.js, Express & MongoDB. Featu
 
 ## ⚙️ Installation  
 1. Clone & install:  
-   
-bash  
+   ```bash  
    git clone https://github.com/MahmoudEmadAbdullah/Student-Management-System.git  
    cd Student-Management-System  
    npm install
 
   2. Configure environment:
-bash 
+      ```bash 
       # .env file  
       PORT=4000  
       MONGO_URL=mongodb://127.0.0.1:27017/students  
       JWT_SECRET=your_ultra_secure_secret_here
 
    3. Start Server
-      
-bash 
+      ```bash 
          npm start  
          # Server will run on http://localhost:4000  
 
@@ -58,4 +56,7 @@ Tools: Postman, MongoDB Compass
 ## 👨💻 Author  
 **Mahmoud Emad Abdallah**  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/mahmoud-emad-8979311b4)  
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-bla
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-black)](https://github.com/MahmoudEmadAbdullah)  
+
+
+
