@@ -1,27 +1,27 @@
-const {create_schema, id_schema} = require('../util/StudentsValidator');
+const {studentCreateSchema, mongoIdSchema} = require('../util/StudentsValidator');
 
 
 const validateCreateStudent = (req, res, next) => {
-    try{
-        create_schema.parse(req.body);
+        const result = studentCreateSchema.safeParse(req.body);
+        if(!result.success){
+            const error = new Error('Validation failed');
+            error.statusCode = 400;
+            error.details = result.error.errors.map(e => e.message);
+            return next(error);
+        }
         next();
-    } catch(err){
-        res.status(400).json({error: err.errors.map(e => e.message)});
-    }
 };
 
 
 const validateStudentId = (req, res, next) => {
-    try{
-        id_schema.parse({id: req.params.id});
-        next();
-    } catch(err){
-        if(err.errors){
-            res.status(400).json({error: err.errors.map(e => e.message)});
-        } else{
-            res.status(400).json({ error: 'Invalid ID format' });
+        const result = mongoIdSchema.safeParse(req.params.id);
+        if(!result.success){
+            const error = new Error("Invalid ID format");
+            error.statusCode = 400;
+            error.details = result.error?.errors.map(e => e.message) || [];
+            return next(error);
         }
-    }
+        next();
 };
 
 

@@ -28,12 +28,12 @@ let getStudentById = async (req, res, next) => {
 
 
 //Create Student
-let addNewStudent = async (req, res, next) => {
+let createStudent = async (req, res, next) => {
     try{
         let std = new Student({
-            name: req.body.name,
-            dept: req.body.dept,
-            id: req.body.id
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            department: req.body.department
         });
         await std.save();
         res.status(201).json(std);
@@ -77,7 +77,7 @@ let deletedStudent = async (req, res, next) => {
 };
 
 module.exports = {
-    addNewStudent,
+    createStudent,
     getStudentById,
     getAllStudents,
     updateStudent,

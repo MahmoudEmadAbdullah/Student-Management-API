@@ -14,7 +14,7 @@ router.get('/:id', validateStudentId, studentsController.getStudentById);
 
 
 //Create new student
-router.post('/', verifyAdminToken, validateCreateStudent, studentsController.addNewStudent);
+router.post('/', verifyAdminToken, validateCreateStudent, studentsController.createStudent);
 
 
 //Delete existing student

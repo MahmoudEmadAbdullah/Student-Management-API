@@ -1,7 +1,7 @@
 {
     "port": 4000,
     "db": {
-        "url": "mongodb://127.0.0.1:27017/students"
+        "url": "mongodb://127.0.0.1:27017/school_management"
     },
     "jwt": {
         "secret": "defaultSecretKey"

@@ -2,29 +2,23 @@ const mongoose = require('mongoose');
 
 
 //Create Schema
-const studentsSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        pattern: /^[A-Z][a-z]*$/,
-        required: true,
-        minlength: 3,
-        maxLength: 15,
-        trim: true
+const studentSchema = new mongoose.Schema({
+    firstName: {
+        type: String, 
+        required: true 
     },
-    dept: {
-        type: String,
-        required: true,
-        default: "SD"
-
+    lastName: { 
+        type: String, 
+        required: true 
     },
-    id: {
-        type: Number,
-        required: true
-    }
+    department: { 
+        type: String, 
+        required: true, 
+        enum: ["CS", "IT", "Math", "Physics"] }
 });
 
 
 //Create Model
-const Student = mongoose.model("dataOfStudents", studentsSchema)
+const Student = mongoose.model("students", studentSchema)
 
 module.exports = Student;

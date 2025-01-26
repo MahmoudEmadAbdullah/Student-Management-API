@@ -1,20 +1,31 @@
 const z = require('zod');
 
 
-const Schemas = {
+const StudentSchemas  = {
 
-    
     //Schema For Create new student
-    create_schema: z.object({
-        name: z.string().regex(/^[A-Z][a-z]*$/, "Name must start with a capital letter and contain only letters"),
-        dept: z.enum(["SA", "SD", "MD", "PD", "EB", "GA", "GD", "SAP"]),
-    }),
+    studentCreateSchema: z.object({
+        firstName: z.string()
+            .min(1, "First name cannot be empty")
+            .regex(/^[A-Z][a-zA-Z'-]*$/,
+"First name must start with a capital letter and contain only letters, hyphens, or apostrophes"),
+
+        lastName: z.string()
+            .min(1, "Last name cannot be empty")
+            .regex(/^[A-Z][a-zA-Z'-]*$/,
+"Last name must start with a capital letter and contain only letters, hyphens, or apostrophes"),
+
+        department: z.string()
+            .min(2,"Department must be at least 2 characters long")
+            .max(15, "Department cannot be longer than 15 characters")
+            .refine( value => ["Math", "Physics", "CS", "IT"].includes(value), {
+                message: "Department must be one of: Math, Physics, CS, IT"
+            }),
+    }).strict(),
 
 
-    //Schema For dealing with students by id
-    id_schema: z.object({
-        id: z.string().regex(/^[0-9a-fA-F]{24}$/, "Invalid ObjectId format"),
-    }),
+    mongoIdSchema: z.string().regex(/^[0-9a-fA-F]{24}$/, "Invalid MongoDB ID format"),
 };
 
-module.exports = Schemas;
+
+module.exports = StudentSchemas;
