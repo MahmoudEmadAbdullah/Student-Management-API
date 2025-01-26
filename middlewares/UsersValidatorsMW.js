@@ -2,13 +2,14 @@ const {registrationSchema} = require('../util/UsersValidator');
 
 
 const userValidator = (req, res, next) => {
-    try{
-        registrationSchema.parse(req.body);
+        const result = registrationSchema.safeParse(req.body);
+        if(!result.success){
+            const error = new Error("Validation failed");
+            error.statusCode = 400;
+            error.details = result.error.errors.map(e => e.message);
+            return next(error);
+        }
         next();
-    } catch(err){
-        const errors = err.errors ? err.errors.map(e => e.message) : [err.message];
-        return res.status(400).json({ errors });
-    }
 };
 
 

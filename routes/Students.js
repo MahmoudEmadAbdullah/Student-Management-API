@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const studentsController = require('../controllers/studentsController');
-const {validateCreateStudent, validateStudentId} = require('../middlewares/studentValidatorMW');
+const {validateCreateStudent, validateUpdateStudent, validateStudentId} = require('../middlewares/studentValidatorMW');
 const verifyAdminToken = require('../middlewares/validateAdminToken');
 
 
@@ -22,7 +22,11 @@ router.delete('/:id', verifyAdminToken, validateStudentId, studentsController.de
 
 
 //Update for student data
-router.put('/:id', verifyAdminToken, validateStudentId, studentsController.updateStudent);
+router.put('/:id', 
+            verifyAdminToken, 
+            validateStudentId, 
+            validateUpdateStudent,
+            studentsController.updateStudent);
 
 
 module.exports = router;

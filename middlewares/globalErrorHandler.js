@@ -9,7 +9,7 @@ const errorHandler = (err, req, res, next) => {
     // Set the error message:
     // - Use generic message for 500 errors to avoid leaking sensitive information
     // - Use the error's custom message for other status codes
-    const message = statusCode === 500 ? 'Interval Server Error' : err.message;
+    const message = statusCode === 500 ? 'Internal Server Error' : err.message;
     
     // Extract error details (if provided):
     // - Can contain validation errors or additional debug information
