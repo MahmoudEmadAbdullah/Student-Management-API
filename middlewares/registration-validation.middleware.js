@@ -1,7 +1,7 @@
-const {registrationSchema} = require('../util/UsersValidator');
+const {registrationSchema} = require('../schemas/register.schema');
 
 
-const userValidator = (req, res, next) => {
+const validateRegistration = (req, res, next) => {
         const result = registrationSchema.safeParse(req.body);
         if(!result.success){
             const error = new Error("Validation failed");
@@ -13,4 +13,4 @@ const userValidator = (req, res, next) => {
 };
 
 
-module.exports = userValidator;
+module.exports = validateRegistration;

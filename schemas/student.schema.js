@@ -24,7 +24,7 @@ const StudentSchemas  = {
     }).strict(),
 
 
-    // Schema for Update new student documents in MongoDB 
+    // Schema for Update exsist student documents in MongoDB 
     studentUpdateSchema: z.object({
         firstName: z.string()
             .min(1, "First name cannot be empty")

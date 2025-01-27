@@ -1,4 +1,4 @@
-const {User} = require('../models/UsersModelDB');
+const {User} = require('../models/User');
 const bcrypt = require('bcrypt');
 
 
@@ -8,7 +8,9 @@ const uesrRegester = async (req, res, next) => {
     //Check already exists
     let user = await User.findOne({email: req.body.email}).exec()
     if(user){
-        return res.status(400).json({Message: 'User already Registerd'});
+        const error = new Error('User already Registerd');
+        error.statusCode = 400;
+        return next(error);
     }
 
     //Hash Password
@@ -28,7 +30,10 @@ const uesrRegester = async (req, res, next) => {
     const token = user.genAuthToken();
 
     res.header('x-auth-token', token);
-    res.status(201).json({ message: 'User registered successfully' });
+    res.status(201).json({
+        success: true,
+        message: 'User registered successfully' 
+    });
     
     } catch(err){
         next(err);

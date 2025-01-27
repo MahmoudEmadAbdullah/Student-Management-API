@@ -1,4 +1,4 @@
-const {authSchema} = require('../util/loginValidator');
+const {authSchema} = require('../schemas/login.schema');
 
 const loginValidator = (req, res, next) => {
         const result = authSchema.safeParse(req.body);

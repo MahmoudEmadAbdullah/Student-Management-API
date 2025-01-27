@@ -1,6 +1,6 @@
 
 
-const {studentCreateSchema, mongoIdSchema, studentUpdateSchema} = require('../util/StudentsValidator');
+const {studentCreateSchema, mongoIdSchema, studentUpdateSchema} = require('../schemas/student.schema');
 
 
 const validateCreateStudent = (req, res, next) => {

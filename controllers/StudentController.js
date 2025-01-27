@@ -1,4 +1,4 @@
-const Student = require('../models/StudentsModelDB');
+const Student = require('../models/Student');
 
 
 //get all students
@@ -17,10 +17,13 @@ let getStudentById = async (req, res, next) => {
     try{
         let std = await Student.findById(req.params.id);
         if(!std){
-            return res.status(404).send("Student With given ID is not found");
-        } else {
-            res.json(std);
-        }
+            const error = new Error("Student With given ID is not found");
+            error.statusCode = 404;
+            return next(error);
+        } 
+
+        res.json(std);
+
     } catch(err){
         next(err);
     }
@@ -49,13 +52,16 @@ let updateStudent = async (req, res, next) => {
         let std = await Student.findOneAndUpdate(
             {_id: req.params.id}, 
             req.body, 
-            {returnDocument: "after"}
+            {new: true}
         );
         if(!std){
-            return res.status(400).json({error: "Student With given ID is not found"});
-        } else {
-            res.json(std);
+            const error = new Error("Student With given ID is not found");
+            error.statusCode = 404;
+            return next(error);
         }
+
+        res.json(std);
+
     } catch(err){
         next(err);
     }
@@ -67,10 +73,13 @@ let deletedStudent = async (req, res, next) => {
     try{
         let std = await Student.findByIdAndDelete(req.params.id);
         if(!std){
-            return res.status(404).json({error:"Student With given ID is not found"});
-        } else {
-            res.json(std);
-        }
+            const error = new Error("Student With given ID is not found");
+            error.statusCode = 404;
+            return next(error);
+        } 
+
+        res.json(std);
+
     } catch(err){
         next(err);
     }

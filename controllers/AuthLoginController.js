@@ -1,4 +1,4 @@
-const {User} = require('../models/UsersModelDB')
+const {User} = require('../models/User')
 const bcrypt = require('bcrypt');
 
 
@@ -8,13 +8,17 @@ const userLogin = async (req, res, next) => {
         //check email
         let user = await User.findOne({email: req.body.email}).exec();
         if(!user){
-            return res.status(400).json({Message: "Invalid credentials"});
+            const error = new Error("Invalid credentials");
+            error.statusCode = 401;
+            return next(error);
         }
 
         //check password
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if(!validPassword){
-            return res.status(400).json({Message: "Invalid credentials"});
+            const error = new Error("Invalid credentials");
+            error.statusCode = 401;
+            return next(error);
         }
 
         //Create token
@@ -22,7 +26,10 @@ const userLogin = async (req, res, next) => {
 
         //send res
         res.header('x-auth-token', token);
-        res.status(201).json({ message: 'User logged in successfully'})
+        res.status(201).json({
+            success: true,
+            message: 'User logged in successfully',
+        })
 
     } catch(err){
         next(err);

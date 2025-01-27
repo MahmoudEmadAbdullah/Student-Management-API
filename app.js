@@ -3,15 +3,15 @@ const express = require('express');
 const path = require('path');
 const helmet = require('helmet');
 const dbConnection = require('./config/dbConnection');
-const errorHandler = require('./middlewares/globalErrorHandler');
+const errorHandler = require('./middlewares/error.middleware');
 const app = express();
 
 
 //Import Routers
-const studentsRouter = require('./routes/Students')
-const userRouter = require('./routes/User');
-const loginRouter = require('./routes/login');
-const adminRouter = require('./routes/admin');
+const studentsRouter = require('./routes/student.routes')
+const registerRouter = require('./routes/auth.register.routes');
+const loginRouter = require('./routes/auth.login.routes');
+const adminRouter = require('./routes/admin.routes');
 
 
 // Environment Variables
@@ -36,7 +36,7 @@ app.use(helmet());
 app.use("/api/students", studentsRouter);
 
 // Using Router of User
-app.use("/api/user", userRouter);
+app.use("/api/register", registerRouter);
 
 // Using Router of login
 app.use("/api/login", loginRouter);
