@@ -1,4 +1,4 @@
-# Student-Management-System
+# Student-Management-API
 
 A secure **Student Management API** built with Node.js, Express & MongoDB. Features JWT authentication, admin roles, and RESTful endpoints. 
 
@@ -21,8 +21,8 @@ A secure **Student Management API** built with Node.js, Express & MongoDB. Featu
 ## ⚙️ Installation  
 1. Clone & install:  
    ```bash  
-   git clone https://github.com/MahmoudEmadAbdullah/Student-Management-System.git  
-   cd Student-Management-System  
+   git clone https://github.com/MahmoudEmadAbdullah/Student-Management-API.git  
+   cd Student-Management-API  
    npm install
 
   2. Configure environment:
